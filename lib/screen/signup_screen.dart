@@ -14,6 +14,12 @@ class _SignupScreenState extends State<SignupScreen> {
   FocusNode emailFocus = FocusNode();
   final password = TextEditingController();
   FocusNode passwordFocus = FocusNode();
+  final bio = TextEditingController();
+  FocusNode bioFocus = FocusNode();  
+  final username = TextEditingController();
+  FocusNode usernameFocus = FocusNode();  
+  final passwordConfirm = TextEditingController();
+  FocusNode passwordConfirmFocus = FocusNode();  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,10 +33,15 @@ class _SignupScreenState extends State<SignupScreen> {
             SizedBox(height: 120.h),
             Textfield(email, Icons.email, 'Email', emailFocus),
             SizedBox(height: 15.h),
+            Textfield(username, Icons.person, 'Username', usernameFocus),
+            SizedBox(height: 10.h), 
+            Textfield(bio, Icons.info, 'Bio', bioFocus),
+            SizedBox(height: 10.h),                        
             Textfield(password, Icons.lock, 'Password', passwordFocus),
             SizedBox(height: 10.h),
-            Forgot(),
+            Textfield(passwordConfirm, Icons.lock, 'Confirm Password', passwordConfirmFocus),
             SizedBox(height: 10.h),
+
             Login(),
             SizedBox(height: 10.h),
             Have(),
@@ -78,7 +89,7 @@ class _SignupScreenState extends State<SignupScreen> {
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Text(
-          'Login',
+          'Signup',
           style: TextStyle(
             fontSize: 24.sp,
             color: Colors.white,
