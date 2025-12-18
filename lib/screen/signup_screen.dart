@@ -50,14 +50,17 @@ class _SignupScreenState extends State<SignupScreen> {
             "Don't have an account?",
             style: TextStyle(fontSize: 14.sp, color: Colors.grey),
           ),
-          Text(
-            "Signup",
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: Colors.blue,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          GestureDetector(
+                onTap: widget.show,
+                child:Text(
+                "Signup",
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
         ],
       ),
     );
