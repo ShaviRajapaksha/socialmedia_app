@@ -1,6 +1,6 @@
 {
-    "name": "socialmedia_app",
-    "short_name": "socialmedia_app",
+    "name": "spotify_app",
+    "short_name": "spotify_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
