@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_app/widgets/album_card.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -68,17 +69,22 @@ class _HomeViewState extends State<HomeView> {
                         SizedBox(width: 15),
                         AlbumCard(
                           image: AssetImage("assets/album2.png"),
+                          label: "Daily Mix",
+                        ),
+                        SizedBox(width: 15),
+                        AlbumCard(
+                          image: AssetImage("assets/album3.png"),
+                          label: "Top Hits",
+                        ),
+                        SizedBox(width: 15),
+                        AlbumCard(
+                          image: AssetImage("assets/album4.png"),
+                          label: "Motivation",
+                        ),
+                        SizedBox(width: 15),
+                        AlbumCard(
+                          image: AssetImage("assets/album5.png"),
                           label: "Chill Vibes",
-                        ),
-                        SizedBox(width: 15),
-                        AlbumCard(
-                          image: AssetImage("assets/album3.png"),
-                          label: "Top Hits",
-                        ),
-                        SizedBox(width: 15),
-                        AlbumCard(
-                          image: AssetImage("assets/album3.png"),
-                          label: "Top Hits",
                         ),
                       ],
                     ),
@@ -89,26 +95,6 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class AlbumCard extends StatelessWidget {
-  final ImageProvider image;
-  final String label;
-
-  const AlbumCard({Key? key, required this.image, required this.label})
-    : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Image(image: image, width: 120, height: 120),
-        SizedBox(height: 10),
-        Text(label),
-      ],
     );
   }
 }
