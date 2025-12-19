@@ -20,8 +20,19 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
+        brightness: Brightness.dark,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white10,
+          type: BottomNavigationBarType.fixed,
+          selectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
+          unselectedLabelStyle: TextStyle(
+            fontSize: 12,
+          ),
+          selectedItemColor: const Color.fromARGB(255, 3, 231, 68),
+          unselectedItemColor: Colors.grey[400],
         ),
       ),
       home: Tabbar(),
