@@ -89,6 +89,19 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 24),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Good Evening",
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        SizedBox(height: 16),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
