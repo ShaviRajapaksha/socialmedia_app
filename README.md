@@ -1,16 +1,36 @@
-# spotify_app
+# 🎵 Spotify Clone – Home UI (Flutter)
 
-A new Flutter project.
+A **Spotify-inspired Home Screen UI** built using **Flutter**, focusing on clean design, smooth scrolling, and reusable components.  
+This project replicates key visual sections of Spotify’s home page such as **Recently Played**, **Good Evening**, and **Made for You**.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Preview
 
-A few resources to get you started if this is your first Flutter project:
+Spotify-style Home UI with gradient background, horizontal album lists, and a quick-play grid layout.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<img width="430" height="804" alt="image" src="https://github.com/user-attachments/assets/96064ed5-c79e-4bd7-a7a3-f35c1c6a85ef" />
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## ✨ Features
+
+- 🎨 Spotify-style gradient background  
+- 📜 Smooth scrollable home layout  
+- 🎧 Recently Played horizontal album list  
+- 🌆 Good Evening quick-access grid  
+- 🎯 Made for You personalized section  
+- 🧱 Reusable UI components  
+- 📱 Responsive for different screen sizes  
+- ⚡ Bouncing scroll physics for better UX  
+
+---
+
+## 🛠️ Built With
+
+- Flutter  
+- Dart  
+- Material UI  
+
+---
+
