@@ -11,32 +11,34 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Stack(
         alignment: Alignment.topLeft,
         children: [
+          // Gradient background (Spotify-style)
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.4,
+            width: size.width,
+            height: size.height * 0.4,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  Colors.white.withOpacity(0.2),
-                  Colors.black.withOpacity(0.3),
-                ],
+                colors: [Colors.green.withOpacity(0.35), Colors.black],
               ),
             ),
           ),
+
           SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: SafeArea(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 40),
+                  const SizedBox(height: 30),
+
+                  /// Top Bar
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
@@ -44,24 +46,27 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         Text(
                           "Recently Played",
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         Row(
-                          children: [
-                            Icon(Icons.history, size: 20),
-                            SizedBox(width: 15),
-                            Icon(Icons.settings, size: 20),
+                          children: const [
+                            Icon(Icons.history, size: 22),
+                            SizedBox(width: 18),
+                            Icon(Icons.settings, size: 22),
                           ],
                         ),
                       ],
                     ),
                   ),
+
+                  /// Recently Played (Horizontal)
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.all(20),
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.all(20),
                     child: Row(
-                      children: [
+                      children: const [
                         AlbumCard(
                           image: AssetImage("assets/album1.png"),
                           label: "Best Mode",
@@ -89,21 +94,123 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 24),
+
+                  /// Good Evening Title
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      "Good Evening",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  /// Good Evening Grid (Spotify style)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                      childAspectRatio: 2.8,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       children: [
-                        Text(
-                          "Good Evening",
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        SizedBox(height: 16),
+                        _quickPlayTile("Liked Songs", "assets/album1.png"),
+                        _quickPlayTile("Top Hits", "assets/album2.png"),
+                        _quickPlayTile("Daily Mix 1", "assets/album3.png"),
+                        _quickPlayTile("Chill Beats", "assets/album4.png"),
+                        _quickPlayTile("Workout", "assets/album5.png"),
+                        _quickPlayTile("Focus", "assets/album2.png"),
                       ],
                     ),
                   ),
+
+                  const SizedBox(height: 28),
+
+                  /// Made For You Section
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      "Made for You",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: const [
+                        AlbumCard(
+                          image: AssetImage("assets/album3.png"),
+                          label: "Daily Mix 1",
+                        ),
+                        SizedBox(width: 15),
+                        AlbumCard(
+                          image: AssetImage("assets/album4.png"),
+                          label: "Daily Mix 2",
+                        ),
+                        SizedBox(width: 15),
+                        AlbumCard(
+                          image: AssetImage("assets/album5.png"),
+                          label: "Release Radar",
+                        ),
+                        SizedBox(width: 15),
+                        AlbumCard(
+                          image: AssetImage("assets/album1.png"),
+                          label: "Discover Weekly",
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
                 ],
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Spotify-style quick play tile
+  Widget _quickPlayTile(String title, String imagePath) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(6),
+              bottomLeft: Radius.circular(6),
+            ),
+            child: Image.asset(
+              imagePath,
+              width: 56,
+              height: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],
