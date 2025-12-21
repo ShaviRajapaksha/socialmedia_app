@@ -4,8 +4,7 @@ class AlbumCard extends StatelessWidget {
   final ImageProvider image;
   final String label;
 
-  const AlbumCard({Key? key, required this.image, required this.label})
-    : super(key: key);
+  const AlbumCard({super.key, required this.image, required this.label});
 
   @override
   Widget build(BuildContext context) {
